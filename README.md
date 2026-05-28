@@ -1,15 +1,14 @@
 # Edutech Solution Python Development Internship - Task 3: Functional Programming
 
 ## Final Outcome
-A Python script (`main.py`) containing various functions that implement:
+- Functions
 - Functions with return types
 - Functions with default parameters
-- Variable number of arguments using `*args`
-- Keyword arguments using `**kwargs`
+- Variable number of arguments using *args
+- Keyword arguments using *kwargs
 - Lambda functions
 - Global and Local scope examples
-- Functions returning multiple values
-- Recursive functions
+
 
 ## Interview Questions & Deliverables
 
@@ -22,23 +21,14 @@ square = lambda x: x * x
 ```
 
 ### 2. Global vs Local Scope?
-- **Local Scope:** Variables created inside a function belong to the local scope of that function and can only be accessed inside that function.
-- **Global Scope:** Variables created in the main body of the Python code are global variables and belong to the global scope. They can be accessed from anywhere in the code, both inside and outside of functions. To modify a global variable inside a function, the `global` keyword must be used.
+**Local Scope:** Variables created inside a function belong to the local scope of that function and can only be accessed inside that function.
 
-**Example used in the script:**
-`company_name` is defined globally and accessed via the `global` keyword, while the `message` variable is defined locally inside the `local_scope_example()` function.
+**Global Scope:** Variables created in the main body of the Python code are global variables and belong to the global scope. They can be accessed from anywhere in the code, both inside and outside of functions. To modify a global variable inside a function, the `global` keyword must be used.
 
-## How to Run
-1. Clone the repository to your local machine.
-2. Navigate to the project directory.
-3. Run the script using Python:
-   ```bash
-   python main.py
-   ```
-
-## Code Implementation (`main.py`)
+## Code Implementation (`utility_functions.py`)
 ```python
 # Global Variable
+import _sitebuiltins
 company_name = "Edutech Solution"
 
 
@@ -48,22 +38,21 @@ def add_numbers(a, b):
 
 
 #Basic Functions with Default Parameters
-def greet_user(name="Student"):
-    return f"Hello, {name}!"
+def greet_user(name="Shrey"):
+    return f"Hello, {name}"
 
 
-#Using *args for Variable Number of Arguments
+#Using *args 
 def calculate_sum(*numbers):
     total = sum(numbers)
     return total
 
 
-#Using **kwargs for Keyword Arguments
-def profile_user(**kwargs):
-    name = kwargs.get('name', 'Unknown')
-    age = kwargs.get('age', 'Unknown')
-    city = kwargs.get('city', 'Unknown')
-    return f"Name: {name}, Age: {age}, City: {city}"
+#Using **kwargs
+def student_info(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+    
 
 
 #Using Lambda Functions
@@ -81,32 +70,17 @@ def global_scope_example():
     global company_name
     return company_name
 
-#Function Returning Multiple Values
-def multiple_returns(a, b): 
-    sum_result = a + b
-    diff_result = a - b
-    prod_result = a * b
-    return sum_result, diff_result, prod_result
-
-#Recursive Function Example
-def factorial(n):
-    if n == 1:
-        return 1
-    else:
-        return n * factorial(n - 1)
-    
-# Main Program
+# Output
 print("Addition of 5 and 3:", add_numbers(5, 3))
 print()
 
-print(greet_user())
-print()
-
 print(greet_user("Shrey"))
-print("Sum of 1, 2, 3, 4:", calculate_sum(1, 2, 3, 4))
 print()
 
-print(profile_user(name="Shrey", age=20, city="Surat"))
+print("Sum of 11, 10:", calculate_sum(11, 10))
+print()
+
+student_info(name="Shrey", age=20, city="Surat")
 print()
 
 print("Square of 5:", square(5))
@@ -117,25 +91,20 @@ print(local_scope_example())
 print("Company Name (Global Variable):", global_scope_example())
 print()
 
-sum_result, diff_result, prod_result = multiple_returns(10, 5)
-print("Sum:", sum_result)
-print("Difference:", diff_result)
-print("Product:", prod_result)
-print()
-
-print("Factorial of 5:", factorial(5))
 ```
 
 ## Output
 ```text
 Addition of 5 and 3: 8
 
-Hello, Student!
+Hello, Shrey
 
-Hello, Shrey!
-Sum of 1, 2, 3, 4: 10
 
-Name: Shrey, Age: 20, City: Surat
+Sum of 11, 10: 21
+
+name: Shrey
+age: 20
+city: Surat
 
 Square of 5: 25
 Product of 4 and 6: 24
@@ -143,14 +112,7 @@ Product of 4 and 6: 24
 This is a local variable
 Company Name (Global Variable): Edutech Solution
 
-Sum: 15
-Difference: 5
-Product: 50
-
-Factorial of 5: 120
 ```
 
 ### Submitted By 
 Shrey Gamit
-P.P Savani University
-CSE
